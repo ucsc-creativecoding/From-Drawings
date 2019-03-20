@@ -16,11 +16,14 @@ The results had a lot of noise and were far from realistic, however, we could se
 ![](lighthous.jpge)
 ![](tower.jpg)
 ![](house.jpg)
-We thought it could be interesting to generate a few of these "new scenes" as a base for a larger artwork piece that would combine the resulting scenes from the drawings. We created a joint artwork between multiple people's recall drawings of a house image scene, the machine model and us, interpreting and reworking the results (see figure 10).  
+We thought it could be interesting to generate a few of these "new scenes" as a base for a larger artwork piece that would combine the resulting scenes from the drawings. We created a joint artwork between multiple people's recall drawings of a house image scene, the machine model and us, interpreting and reworking the results.  
+
+![](NewScene2.png)
+
+We also tried another for combining the generated image scenes. Instead of combining the results from the recall drawings of the same image scene (e.g. an image of a house), we combined (collaged) results from various image scene recall drawings. The recall drawings, in this case, were of different categories of scene images such as a playground, sky-rise building, farm, mountain landscape etc. We appreciated the result of this step. 
+
 ![](MultipleScenesImages.png)
 ![](MultipleScenes.jpg)
-![](NewScene2.png)
-We also tried another for combining the generated image scenes. Instead of combining the results from the recall drawings of the same image scene (e.g. an image of a house), we combined (collaged) results from various image scene recall drawings. The recall drawings, in this case, were of different categories of scene images such as a playground, sky-rise building, farm, mountain landscape etc. We appreciated the result of this step. 
 ![](NewScene.jpg)
 At this time, we are not completely pleased with our results since there is more noise than we aimed for. To create new scenes, we decided to take a different approach and train on specific item category separately. We want to work towards creating a new scene by generating a few separated items from drawings, and then collage to create a new artwork. The idea is similar to what we presented above, only the training method is different. In order to get more realistic results from our training, we need to find the appropriate specific categories to train on, "part of scenes," such as trees, rivers, types of building, etc. Then the person who creates the drawing would be directed to draw from memory per each of the categories or would be able to choose a few categories out of many. The model would generate separate images and will then collage these together to create the new scene artwork. 
 
