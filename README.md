@@ -1,1 +1,101 @@
-# From-Drawings
+What if we could generate surreal scene images that feel like a scene from a dream? Inspired by Hertzmann \cite{hertzmann2018can} inquiry into questioning if computers can create art, we wanted to explore the space of making art by "collaborating" with a machine model. We followed a Research-through-Design (RtD) approach \cite{gaver2012should, zimmerman2010analysis}. Gaver describes it as "a generative discipline," that is "able to create multiple new worlds rather than describing a single existing one." \cite{gaver2012should} We were interested in the space of image generation that would create results, unlike real-world images. 
+
+\section{Background}
+Initially, we were inspired by a dataset of drawings from research that utilized images of scene categories to measure the recall capability of participants based on their drawings. To evaluate the recall drawing of the image scenes \cite{bainbridge2019drawings} used Amazon Mechanical Turk (AMT) by recruiting thousands of blind scorers to assess the "drawings diagnosticity, number of objects, extraneous objects, spatial detail, and object size within the drawings." \cite{bainbridge2019drawings} The main results of this work were that "Drawings from memory reveal the object and spatial information maintained within visual recall memory after a delay," and that "drawings from memory contain meaningful and quantifiable knowledge." \cite{bainbridge2019drawings}
+
+The drawings from memory represented an accurate spatial map of the entire image, and we wondered if we could train a model based scene images to create spatially viable images based on simple drawings that we would consider as new and interesting scenes. This made us think about human recall ability vs. machine recall ability and we wondered what we could generate from the recall drawings dataset if we managed to create a machine model for those drawings and their scene images. 
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{Initial.jpg}
+  \caption{Drawings from original recall study and the image scene as "ground truth".}
+  \Description{}
+\end{figure} 
+			
+\section{Method}
+The memory recall study in \cite{bainbridge2019drawings} generated a dataset of 2682 scene drawings, approx. 30 drawings per image scene. We reached out to the authors of \cite{bainbridge2019drawings} to ask for the original scene images they used in their study. Thankfully we received access to that dataset and began hand matching drawings to their scene images, to create a "ground truth" per each drawing. Unfortunately, the original images of the drawings from the recall study were not formatted as squares so we had to reformat all (see Figure 2).  
+
+We utilized the code presented in \cite{pix2pix} to train a model based on the dataset we created from the drawing made in \cite{bainbridge2019drawings}.  
+After <fill in Ran> number of hours of training the results were interesting to a degree but not promising. The data set we had was not large enough to generate viable results.
+The model we used seems to work well when there are clear edges matching to the ground truth images, and with at least 400 images (drawings per one ground truth image).
+See initial results of images generated when testing in Figure 3.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{Testing}
+  \caption{Testing results of initial training}
+  \Description{}
+\end{figure}
+
+We realized our training dataset was too small and since the model works best with clear edges we decided to try something else. We found another dataset \cite{SceneClassification} of scenes that had 24,335 images (see Figure 4). 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{newdata.jpg}
+  \caption{The new and larger dataset of scenes we trained on.}
+  \Description{}
+\end{figure}
+
+\section{results}
+Since we did not have hand drawings of these images we found an alternative. We used the canny edge detection to get the line edges of the images and use it as "drawings" training data matching to the ground truth image scenes and then trained over 100 hours, up to epoch 150 (see Figure 5). 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{edges.jpg}
+  \caption{A sample of the training data we created by applying the canny edge detection.}
+  \Description{}
+\end{figure}
+
+We were curious about what results we will get as our dataset was highly variable. We tested by using a recall drawing matched to their ground truth scene image from our initial training dataset. We realized that the image was lacking depth, so we ran a comparison with the image edges as an input and the results were more realistic.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{depthdrawing.jpg}
+  \caption{Top: recall drawing as input. Bottom: edge from scene image (target) as input.}
+  \Description{}
+\end{figure}
+
+The results had a lot of noise and were far from realistic, however, we could see potential in some of the images generated. Some looked as if could have been made by impressionist painters (see figure 1 & 10). 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{lighthous.png}
+  \caption{An example of the results for the different recall drawings of the same image scene of a lighthouse.}
+  \Description{}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{tower.jpg}
+  \caption{An example of the results for the different recall drawings of the same image scene of a tower.}
+  \Description{}
+\end{figure}
+We thought it could be interesting to generate a few of these "new scenes" as a base for a larger artwork piece that would combine the resulting scenes from the drawings. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{house.jpg}
+  \caption{An example of the results for the different recall drawings of the same image scene of a house.}
+  \Description{}
+\end{figure}
+We created a joint artwork between multiple people's recall drawings of a house image scene, the machine model and us, interpreting and reworking the results (see figure 10).  
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{NewScene2.png}
+  \caption{An example of six results for the different recall drawings of the same image scene of a house collaged to create a new scene.}
+  \Description{}
+\end{figure}
+
+We also tried another for combining the generated image scenes. Instead of combining the results from the recall drawings of the same image scene (e.g. an image of a house), we combined (collaged) results from various image scene recall drawings. The recall drawings, in this case, were of different categories of scene images such as a playground, sky-rise building, farm, mountain landscape etc. We appreciated the result of this step (see figure 1). 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{MultipleScenesImages.png}
+  \caption{Different scene images.}
+  \Description{}
+\end{figure}
+
+\section{conclusion and future work}
+At this time, we are not completely pleased with our results since there is more noise than we aimed for. To create new scenes, we decided to take a different approach and train on specific item category separately. We want to work towards creating a new scene by generating a few separated items from drawings, and then collage to create a new artwork. The idea is similar to what we presented above, only the training method is different. In order to get more realistic results from our training, we need to find the appropriate specific categories to train on, "part of scenes," such as trees, rivers, types of building, etc. Then the person who creates the drawing would be directed to draw from memory per each of the categories or would be able to choose a few categories out of many. The model would generate separate images and will then collage these together to create the new scene artwork. 
+
+We began testing this concept by using specific categories for training data, like categories of flowers from \cite{FlowersRecognition} datasets. We are using this as a test on a relatively small number of images (up to 1000 images per category) to check results before moving forward on this concept. 
