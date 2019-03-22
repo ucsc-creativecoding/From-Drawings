@@ -31,5 +31,17 @@ From the image above, the colors in the result are blended, and the objects cann
 We began testing this concept by using specific categories for training data, like categories of flowers (sunflower, daisy, dandelion, rose) from https://kaggle.com/alxmamaev/flowers-recognition datasets. Other categories we have trained on include fruit, trees, and river, etc. We are using this as a test on a relatively small number of images (up to 1000 images per category) to check results before moving forward on this concept. Testing results based on edges as input yield pretty good results. our testing resluts from line edges look like this: 
 ![](dd.png)
 
-Use the different models, we would like to combine them into one scene.
+Use the different models, we would like to combine them into one scene. First example we have tried is showed in next figure. We found a drawing online, which contains houses, trees, and river. After we get the edges of the image and get the result from different networks we trained based on tree dataset and river (see image below).
+![](outputFromDifferentNetworks.PNG)
+In order to combine two images, we created the masks for different objects, see image below.
+![](mask.PNG)
+And we multiply the mask with the results from the train networks, and finally we add the two images to get the result in image below, where the edges of the tree are preserved and filled in more green color. 
+![](output.PNG)
+
+Second example we want to combine different component into one image, shown in image below left column. We got images for tree and ocean and we get result from different network for trees and ocean, and we got the result as in image below right column.
+
+![](treeAndOcean.PNG)
+For combining the ocean and tree outputs, the mask we generate are shown in image below top too images, and by doing some multiplication and addition operations to the mask and the outputs, the final result is shown in image below right bottom image. 
+
+![](maskForTreeandOcean.PNG)
 
