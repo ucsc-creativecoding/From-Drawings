@@ -1,7 +1,7 @@
-# Description
+# From Drawings to Abstract Scenes 
+By Ran Xu and Ella Dagan
 
-## From Drawings to Abstract Scenes 
-### Ran Xu and Ella Dagan
+# Description
 What if we could generate scene images that feel like a scene from a dream? We were interested in the space of image generation that would create results, unlike real-world images. Initially, we were inspired by a dataset of drawings from research that utilized images of scene categories to measure the recall capability of participants based on their drawings. To evaluate the recall drawing of the image scenes (Bainbridge2019) used Amazon Mechanical Turk (AMT) by recruiting thousands of blind scorers to assess the "drawings diagnosticity, number of objects, extraneous objects, spatial detail, and object size within the drawings." (Bainbridge2019)The drawings from memory represented an accurate spatial map of the entire image, and we wondered if we could train a model based scene images to create spatially viable images generated from simple drawings that we would consider as new and interesting scenes. This made us think about human recall ability vs. machine recall ability and we wondered what we could generate from the recall drawings dataset if we managed to create a machine model for those drawings and their scene images. This study generated a dataset of 2682 scene drawings, approx. 30 drawings per image scene. We found access to the dataset and also were refered to the orginal image scenes of the recall drawings. We hand matched drawings to their scene images, to create a "ground truth" per each drawing. Unfortunately, the original images of the drawings from the recall study were not formatted as squares so we had to reformat all, see below:
 
 ![](ImageForReadme/Initial.jpg)
