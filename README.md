@@ -41,7 +41,8 @@ And we multiply the mask with the results from the train networks, and finally w
 Second example we want to combine different component into one image, shown in image below left column. We got images for tree and ocean and we get result from different network for trees and ocean, and we got the result as in image below right column.
 
 ![](treeAndOcean.PNG)
+
 For combining the ocean and tree outputs, the mask we generate are shown in image below top too images, and by doing some multiplication and addition operations to the mask and the outputs, the final result is shown in image below right bottom image. 
 
-![](maskForTreeandOcean.PNG)
+![](MaskForTreeandOcean.PNG)
 
