@@ -1,3 +1,4 @@
+# Description
 What if we could generate scene images that feel like a scene from a dream? We were interested in the space of image generation that would create results, unlike real-world images. Initially, we were inspired by a dataset of drawings from research that utilized images of scene categories to measure the recall capability of participants based on their drawings. To evaluate the recall drawing of the image scenes (Bainbridge2019) used Amazon Mechanical Turk (AMT) by recruiting thousands of blind scorers to assess the "drawings diagnosticity, number of objects, extraneous objects, spatial detail, and object size within the drawings." (Bainbridge2019)The drawings from memory represented an accurate spatial map of the entire image, and we wondered if we could train a model based scene images to create spatially viable images generated from simple drawings that we would consider as new and interesting scenes. This made us think about human recall ability vs. machine recall ability and we wondered what we could generate from the recall drawings dataset if we managed to create a machine model for those drawings and their scene images. This study generated a dataset of 2682 scene drawings, approx. 30 drawings per image scene. We found access to the dataset and also were refered to the orginal image scenes of the recall drawings. We hand matched drawings to their scene images, to create a "ground truth" per each drawing. Unfortunately, the original images of the drawings from the recall study were not formatted as squares so we had to reformat all, see below:
 
 ![](Initial.jpg)
@@ -45,4 +46,26 @@ Second example we want to combine different component into one image, shown in i
 For combining the ocean and tree outputs, the mask we generate are shown in image below top too images, and by doing some multiplication and addition operations to the mask and the outputs, the final result is shown in image below right bottom image. 
 
 ![](MaskForTreeandOcean.PNG)
+
+# Code Usage
+The usage of pix2pix is descripted here: https://github.com/affinelayer/pix2pix-tensorflow
+To get the edge of an image:
+
+
+# Trained Model 
+
+You can access to the pretained model in the google drive folder: https://drive.google.com/drive/u/0/folders/1ysksYyPh5ZdX9t7XxwIUvyDKhDlBfk0U
+
+We have trained networks based on pix2pix model for different categories:
+1. Tree
+2. Rose
+3. River
+4. Daisy
+5. Apple
+6. dandelion
+7. Drawings - Scenes
+8. Edges of scenes - Scenes
+
+
+
 
