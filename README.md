@@ -1,4 +1,4 @@
-# From Drawings to Abstract Scenes 
+# From Drawings to Abstract Scenes Using Pix2Pix
 By Ran Xu and Ella Dagan
 
 # Description
