@@ -49,6 +49,22 @@ For combining the ocean and tree outputs, the mask we generate are shown in imag
 
 # Code Usage
 The usage of pix2pix is descripted here: https://github.com/affinelayer/pix2pix-tensorflow
+
+```
+# train the model (this may take 1-8 hours depending on GPU, on CPU you will be waiting for a bit)
+python pix2pix.py \
+  --mode train \
+  --output_dir facades_train \
+  --max_epochs 200 \
+  --input_dir facades/train \
+  --which_direction BtoA
+# test the model
+python pix2pix.py \
+  --mode test \
+  --output_dir facades_test \
+  --input_dir facades/val \
+  --checkpoint facades_train
+```
 To get the edge of an image: (change the filename in edge.py to target filename)
 ```
 python edge.py
