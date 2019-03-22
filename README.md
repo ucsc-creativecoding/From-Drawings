@@ -49,8 +49,15 @@ For combining the ocean and tree outputs, the mask we generate are shown in imag
 
 # Code Usage
 The usage of pix2pix is descripted here: https://github.com/affinelayer/pix2pix-tensorflow
-To get the edge of an image:
+To get the edge of an image: (change the filename in edge.py to target filename)
+```
+python edge.py
+```
+To apply mask to images:
 
+```
+python mask.py
+```
 
 # Trained Model 
 
@@ -66,6 +73,7 @@ We have trained networks based on pix2pix model for different categories:
 7. Drawings - Scenes
 8. Edges of scenes - Scenes
 
-
+# Tools used for making masks
+photopea.com
 
 
