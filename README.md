@@ -54,16 +54,16 @@ The usage of pix2pix is descripted here: https://github.com/affinelayer/pix2pix-
 # train the model (this may take 1-8 hours depending on GPU, on CPU you will be waiting for a bit)
 python pix2pix.py \
   --mode train \
-  --output_dir facades_train \
+  --output_dir your_output_dir \
   --max_epochs 200 \
-  --input_dir facades/train \
-  --which_direction BtoA
+  --input_dir your_input_dir \
+  --which_direction AtoB
 # test the model
 python pix2pix.py \
   --mode test \
-  --output_dir facades_test \
-  --input_dir facades/val \
-  --checkpoint facades_train
+  --output_dir our_output_dir \
+  --input_dir your_input_dir \
+  --checkpoint network_you_have_trained
 ```
 To get the edge of an image: (change the filename in edge.py to target filename)
 ```
